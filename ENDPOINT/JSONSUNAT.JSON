@@ -1,0 +1,23 @@
+{
+    "success": true,
+    "data": {
+      "direccion": "AV. DEFENSORES DEL MORRO NRO. 1277",
+      "direccion_completa": "AV. DEFENSORES DEL MORRO NRO. 1277, LIMA - LIMA - CHORRILLOS",
+      "ruc": "20331066703",
+      "nombre_o_razon_social": "INRETAIL PHARMA S.A.",
+      "estado": "ACTIVO",
+      "condicion": "HABIDO",
+      "departamento": "LIMA",
+      "provincia": "LIMA",
+      "distrito": "CHORRILLOS",
+      "ubigeo_sunat": "150108",
+      "ubigeo": [
+        "15",
+        "1501",
+        "150108"
+      ],
+      "es_agente_de_retencion": null,
+      "anexos": []
+    },
+    "source": "apiperu.dev"
+  }

@@ -1,0 +1,20 @@
+{
+    "system": "SmartTunqui",
+    "errors": false,
+    "id": 5555462333,
+    "operation": "invoices",
+    "bank_slip_data": {
+      "bank": "341",
+      "account": "11111",
+      "agency": "2938",
+      "our_number": "1111111111",
+      "document_number": 5555462333,
+      "processed_at": "2021-04-06",
+      "paid_at": "",
+      "total_amount": 6617.13,
+      "expires_at": "2021-04-25",
+      "paid_amount": 6617.13,
+      "recipient_name": "BIORITMO FRANQUEADORA LTDA",
+      "recipient_cnpj": "14711306000160"
+    }
+  }

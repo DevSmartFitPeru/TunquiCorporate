@@ -1,0 +1,13 @@
+{
+    "system": "SmartSystem",
+    "errors": false,
+    "id": 5555462333,
+    "operation": "invoices",
+    "invoice_data": {
+      "fiscal_authentication_code": "COD-FED992399",
+      "fiscal_authorization_datetime": "2020-12-01 17:57:03",
+      "fiscal_id": 987898,
+      "fiscal_model": "nfse",
+      "fiscal_series": 1
+    }
+  }

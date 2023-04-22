@@ -1,0 +1,95 @@
+{
+    "person": {
+        "zip": "47321954",
+        "city": "Lima",
+        "name": "Luis Azañero",
+        "email": "luis.azanero@smartfit.com",
+        "address": {
+            "number": "880",
+            "street": "Av. Francisco Pizarro",
+            "district": "Rimac",
+            "complement": null
+        },
+        "document": "46321954",
+        "area_code": "51",
+        "cellphone": "959392237",
+        "wallet_id": 1,
+        "state_code": "150128",
+        "state_name": "Lima",
+        "type_person": "natural_person",
+        "document_kind": "DNI",
+        "final_customer": true,
+        "icms_contributor": false,
+        "nationality_code": "PER",
+        "state_registration": null,
+        "municipal_registration": null
+    },
+    "country": "Perú",
+    "invoice": {
+        "id": 52088,
+        "items": [
+            {
+                "id": 52088,
+                "kind": "tuition",
+                "due_at": "2021-03-10",
+                "paid_at": "2021-03-15 00:00:00 -0300",
+                "quantity": 1,
+                "list_price": 169.9,
+                "sale_price": 86.71,
+                "additional_info": "Mensualidad Corporativa",
+                "amount_with_tax": 86.71,
+                "billing_company": "Visa",
+                "membership_info": {
+                    "end_at": "2022-07-04 00:00:00 +0000",
+                    "start_at": "2022-07-04 00:00:00 +0000"
+                },
+                "front_product_id": 1002991771,
+                "front_gym_plan_id": 1,
+                "amount_without_tax": 86.71
+            }
+        ],
+        "due_at": "2022-07-04 00:00:00 +0000",
+        "system": "SmartTunqui",
+        "paid_at": "2022-07-07 00:00:00 -0300",
+        "generated_at": "2022-03-16 13:28:50 -0300",
+        "tax_percentage": 0.18,
+        "transaction_type": "invoice_to_financial_responsible",
+        "is_overdue_recovery": false
+    },
+    "location": {
+        "id": 795,
+        "city": "Lima",
+        "name": "Corporativo",
+        "acronym": "LIMCOR1",
+        "address": "Av. Petit Thouars Nro. 5356 Int. 4006"
+    },
+    "receivable": {
+        "net_value": 86.71,
+        "credit_date": "2021-04-14 00:00:00 +0000",
+        "gross_value": 86.71,
+        "is_smartfin": false,
+        "interest_value": 0,
+        "contract_number": "1098916783",
+        "card_information": {
+            "nsu": "134078",
+            "brand": "MASTER_CIELO",
+            "total_installment": 1,
+            "current_installment": 1,
+            "authorization_number": "999999",
+            "truncated_card_number": "9999-XXXX-XXXX-8888",
+            "administration_tax_value": 0.502918,
+            "administration_tax_percentage": 0.58
+        },
+        "transaction_type": "credit_card_recurring",
+        "fullname_gym_student": "Luis Azañero Cruz",
+        "registration_gym_student": "31840",
+        "identification_gym_student": "83017598012",
+        "erp_receivable_customer_identification": "01027058000191"
+    },
+    "integration": {
+        "fin_id":  795,
+        "operation": "person_plan",
+        "conciliator_id": 1234,
+        "unity_identification": 1234
+    }
+}

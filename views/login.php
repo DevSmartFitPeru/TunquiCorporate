@@ -83,7 +83,7 @@ $error=sha1(md5("Error"));
         <!-- Login -->
         <div class="nk-block toggled" id="l-login">
             <div class="nk-form" style="border-radius: 15px;">
-                <h3 style="color:#1C1C1C;">SmartTunqui Corporate</h3>
+                <h3 style="color:#1C1C1C;"><u>SmartTunqui "Corporate"</u></h3>
                 <form   method="POST" action="../controlador/login.php">
             <img src="../public/imagenes/logo/logo-dark.svg" width="150">
             <br>
@@ -102,7 +102,7 @@ $error=sha1(md5("Error"));
                         <small>Password: Documento de identidad.</small>
                     </div>
                 </div>
-                <small style="color:#1C1C1C;">* Gestión de Ventas Corporativas V.1.1 (Producción)</small>
+                <small style="color:#1C1C1C;">* Gestión y Administración de Ventas Corporativas V.1.1 (Producción)</small>
              
                 <button type="submit" name="submitBtnLogin" id="submitBtnLogin" class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></button>
 

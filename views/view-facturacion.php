@@ -11,6 +11,9 @@ switch ($area) {
     case "0014 - FP&A":
         $flag_boton = "enabled";
       break;
+      case "0034 - TI - SOLUCIONES CORPORA":
+        $flag_boton = "enabled";
+      break;
     default:
     $flag_boton = "disabled";
   }

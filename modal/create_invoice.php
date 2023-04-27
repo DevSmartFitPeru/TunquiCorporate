@@ -85,11 +85,10 @@
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">* FORMA_DE_PAGO</label>
-   
+
       <select name="FORMA_DE_PAGO"  class="form-control" required>
       <option value="30">CRÉDITO 30 DIAS</option>
       <option value="15">CRÉDITO 15 DIAS</option>
-      <option value="7">CRÉDITO 7 DIAS</option>
       <option value="0">CONTADO</option>
 
     </select>

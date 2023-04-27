@@ -1,3 +1,6 @@
+<?PHP
+error_reporting(0);
+?>
 <div class="modal fade" id="deuda_<?php echo $row['ID_FACTURACION']; ?>"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -12,14 +15,14 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputPassword4">FECHA DE PAGO Y/O DEPÓSITO</label>
-      <input type="date" class="form-control" name ="FECHA_PAGO_FACTURA_CORPORATIVA"   value="<?php echo $row['FECHA_PAGO_FACTURA_CORPORATIVA']; ?>" placeholder="# Nro. AP" required>
+      <input type="date" class="form-control" name ="FECHA_PAGO_FACTURA_CORPORATIVA"   value="<?php echo $row['FECHA_PAGO_FACTURA_CORPORATIVA'];?>"  required>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">IMPORTE_PENDIENTE_PAGO</label>
-      <input type="text" name="IMPORTE_PENDIENTE_PAGO" value="<?php echo $row['IMPORTE_PENDIENTE_PAGO'];?>" placeholder="Importe" class="form-control" rrequired>
+      <input type="text" name="IMPORTE_PENDIENTE_PAGO" value="<?php echo $row['IMPORTE_PENDIENTE_PAGO'];?>" placeholder="Importe" class="form-control" required>
     </div>
 
   </div>
@@ -31,8 +34,8 @@
   <option value="">Seleccione:</option>
   <option value="TRANSFERENCIA INTERBANCARIA">TRANSFERENCIA INTERBANCARIA</option>
   <option value="DEPOSITO EN CUENTA">DEPOSITO EN CUENTA</option>
-  <option value="PLIM">PLIM</option>
-  <option value="YAPERO">YAPERO</option>
+  <option value="PLIN">Plin</option>
+  <option value="YAPE">Yape</option>
 </select>
 
     </div>

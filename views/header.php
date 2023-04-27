@@ -1,7 +1,7 @@
 <?php
 //Zona Horaria por default lima
 date_default_timezone_set("America/Lima");
-error_reporting(0);
+
 include_once('../config/conexion.php');
 session_start();
 if(!$_SESSION["verificar"]){
@@ -13,6 +13,7 @@ $ape = $_SESSION["APELLIDOS"];
 
 $nombres = $nombre.' '.$ape;
 $filial = $_SESSION["FILIAL"];
+$area = $_SESSION["AREA"];
 
 ?>
 <!doctype html>
@@ -124,6 +125,7 @@ $filial = $_SESSION["FILIAL"];
                                                     <h3><?php echo $nombres?></h3>
                                                     <h3><?php echo $dni?></h3>
                                                     <p><strong></strong> <?php echo $filial?></p>
+                                                    <p><strong></strong> <?php echo $area?></p>
                                                 </div>
                                             </div>
                                         </a>
@@ -150,13 +152,7 @@ $filial = $_SESSION["FILIAL"];
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Home</a>
-                                    <ul class="collapse dropdown-header-top">
-                                        <li><a href="dashboard">Dashboard</a></li>
-                                
-                                    </ul>
-                                </li>
-                       
+                           
                          
                              
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Type Transaction</a>
@@ -219,13 +215,16 @@ $filial = $_SESSION["FILIAL"];
             <div class="row" style="background-color: #ffb612;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li class="active"><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Home</a>
-                        </li>
+                    
 
                         <li><a data-toggle="tab" href="#administrador"><i class="notika-icon notika-windows"></i>Clientes Corporativos</a>
                         </li>
+                        <li><a data-toggle="tab" href="#facturacion"><i class="notika-icon notika-windows"></i>Facturación</a>
+                        </li>
            
-             
+                        <li><a data-toggle="tab" href="#reporte"><i class="notika-icon notika-windows"></i>Reportes</a>
+                        </li>
+           
                      
                         <li><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i>Sesión</a>
                         </li>
@@ -233,7 +232,7 @@ $filial = $_SESSION["FILIAL"];
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="cuadratura">Dashboard</a>
+                                <li><a href="sin_acceso">Dashboard</a>
                                 </li>
                            
                             </ul>
@@ -243,13 +242,36 @@ $filial = $_SESSION["FILIAL"];
                         <div id="administrador" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                              
-                                <li><a href="view-cliente">Clientes</a>
+                                <li><a href="view-cliente">Clientes Corporativos</a>
                                 </li>
 
 
                             </ul>
                         </div>
 
+                        
+                        <div id="reporte" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                             
+                                <li><a href="invoice_ar">Fecha Emisión AR</a>
+                                </li>
+                                <li><a href="invoice_vencimiento">Fecha Vencimiento</a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+
+
+                        <div id="facturacion" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                             
+                                <li><a href="view-facturacion">Facturación Corporativa</a>
+                                </li>
+
+
+                            </ul>
+                        </div>
                         <div id="cuadratura" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                              

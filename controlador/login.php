@@ -40,6 +40,7 @@ if($result === false){
       $_SESSION["NOMBRES"]= $row['NOMBRES'];
       $_SESSION["APELLIDOS"]= $row['APELLIDOS'];
       $_SESSION["FILIAL"]= $row['FILIAL'];
+      $_SESSION["AREA"]= $row['AREA'];
 
 
       $variable_config = $_SESSION["FILIAL"];

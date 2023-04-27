@@ -1,19 +1,46 @@
 <?php
+error_reporting(0);
 include 'header.php';
+$ruc = $_GET['ruc'];
+$curl = curl_init();
+curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://apiperu.dev/api/ruc/".$ruc."?api_token=9031634e2e95c585c2ef29fbd786bc0eedf3542a40c98c40b1adb3e15d125251",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_SSL_VERIFYPEER => false
+));
+$response = curl_exec($curl);
+$err = curl_error($curl);
+curl_close($curl);
+if ($err) {
+    echo "cURL Error #:" . $err;
+} else {
+    //echo $response;
+}
+
+$data = json_decode($response, true);
+$direccion_completa = $data['data']['direccion_completa'];
+$ruc_cliente = $data['data']['ruc'];
+$nombre_o_razon_social = $data['data']['nombre_o_razon_social'];
+$estado = $data['data']['estado'];
+$condicion = $data['data']['condicion'];
+$departamento = $data['data']['departamento'];
+$provincia = $data['data']['provincia'];
+$distrito = $data['data']['distrito'];
+$ubigeo_sunat = $data['data']['ubigeo_sunat'];
 ?>
 	<!-- Breadcomb area End-->
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
 
-        <form action="../controlador/create_customer.php" method="post">
-
-            <div class="row">
+        <form action="../controlador/create_customer.php" method="post" enctype="multipart/form-data">
+        <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
                     <div class="basic-tb-hd">
                             <h2>DATOS FISCALES - SUNAT</h2>
-                            <p>* La información fiscal es extraida de SUNAT</p>
+                            <p>* La información fiscal es extraida de SUNAT, de existir problemas con el servicio rest, validar los datos en consulta RUC haciendo clic <a  href="https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp"target="_blank" role="button">Aquí</a></p>
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -22,7 +49,7 @@ include 'header.php';
                                         <i class="notika-icon  notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_RUC" value="20331066703" class="form-control" placeholder="RUC" required>
+                                        <input type="text" name="EMPRESA_RUC" value="<?php echo $ruc_cliente?>" class="form-control" placeholder="RUC" required>
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +59,7 @@ include 'header.php';
                                         <i class="notika-icon  notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_RAZON_SOCIAL" value="INRETAIL PHARMA S.A."  class="form-control" placeholder="RAZON SOCIAL" required>
+                                        <input type="text" name="EMPRESA_RAZON_SOCIAL" value="<?php echo $nombre_o_razon_social?>"  class="form-control" placeholder="RAZON SOCIAL" required>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +69,7 @@ include 'header.php';
                                         <i class="notika-icon  notika-map"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_DIRECCION_FISCAL" value="AV. DEFENSORES DEL MORRO NRO. 1277, LIMA - LIMA - CHORRILLOS" class="form-control" placeholder="DIRECCION FISCAL" required>
+                                        <input type="text" name="EMPRESA_DIRECCION_FISCAL" value="<?php echo $direccion_completa?>" class="form-control" placeholder="DIRECCION FISCAL" required>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +81,7 @@ include 'header.php';
                                         <i class="notika-icon  notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_ESTADO" value="ACTIVO" class="form-control" placeholder="ESTADO"required>
+                                        <input type="text" name="EMPRESA_ESTADO" value="<?php echo $estado?>" class="form-control" placeholder="ESTADO"required>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +91,7 @@ include 'header.php';
                                         <i class="notika-icon notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_CONDICION" value="HABIDO" class="form-control" placeholder="CONDICION"required>
+                                        <input type="text" name="EMPRESA_CONDICION" value="<?php echo $condicion?>" class="form-control" placeholder="CONDICION"required>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +101,7 @@ include 'header.php';
                                         <i class="notika-icon  notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_DEPARTAMENTO" value="LIMA" class="form-control" placeholder="DEPARTAMENTO"required>
+                                        <input type="text" name="EMPRESA_DEPARTAMENTO" value="<?php echo $departamento?>" class="form-control" placeholder="DEPARTAMENTO"required>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +113,7 @@ include 'header.php';
                                         <i class="notika-icon  notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_PROVINCIA" value="LIMA" class="form-control" placeholder="PROVINCIA"required>
+                                        <input type="text" name="EMPRESA_PROVINCIA" value="<?php echo $provincia?>" class="form-control" placeholder="PROVINCIA"required>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +123,7 @@ include 'header.php';
                                         <i class="notika-icon  notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_DISTRITO" value="CHORRILLOS"  class="form-control" placeholder="DISTRITO"required>
+                                        <input type="text" name="EMPRESA_DISTRITO" value="<?php echo $distrito?>"  class="form-control" placeholder="DISTRITO"required>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +133,7 @@ include 'header.php';
                                         <i class="notika-icon  notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_UBIGEO" value="150108" class="form-control" placeholder="UBIGEO"required>
+                                        <input type="text" name="EMPRESA_UBIGEO" value="<?php echo $ubigeo_sunat?>" class="form-control" placeholder="UBIGEO"required>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +158,7 @@ include 'header.php';
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="CONTACTO_NOMBRES" value="LUIS DEV" class="form-control" placeholder="Nombres"required>
+                                        <input type="text" name="CONTACTO_NOMBRES" class="form-control" placeholder="Nombres"required>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +168,7 @@ include 'header.php';
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="CONTACTO_APELLIDOS" value="DEV AZAÑERO" class="form-control" placeholder="Apellidos"required>
+                                        <input type="text" name="CONTACTO_APELLIDOS"  class="form-control" placeholder="Apellidos"required>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +178,7 @@ include 'header.php';
                                         <i class="notika-icon notika-phone"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="CONTACTO_TELEFONO" value="99959392237" class="form-control" placeholder="Telefono"required>
+                                        <input type="text" name="CONTACTO_TELEFONO"  class="form-control" placeholder="Telefono"required>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +190,7 @@ include 'header.php';
                                         <i class="notika-icon notika-mail"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="email"  name="CONTACTO_EMAIL" value="luis.azanero@smartfit.com" class="form-control" placeholder="Email"required>
+                                        <input type="text"  name="CONTACTO_EMAIL" class="form-control" placeholder="Email"required>
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +215,7 @@ include 'header.php';
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text"  name="FACTURACION_NOMBRES" value="NAME CONTACT" class="form-control" placeholder="Nombres"required>
+                                        <input type="text"  name="FACTURACION_NOMBRES"class="form-control" placeholder="Nombres"required>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +225,7 @@ include 'header.php';
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="FACTURACION_APELLIDOS" value="APELLIDOS CONTACT" class="form-control" placeholder="Apellidos"required>
+                                        <input type="text" name="FACTURACION_APELLIDOS"  class="form-control" placeholder="Apellidos"required>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +235,7 @@ include 'header.php';
                                         <i class="notika-icon notika-phone"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="FACTURACION_TELEFONO" value="99999999" class="form-control" placeholder="Telefono"required>
+                                        <input type="text" name="FACTURACION_TELEFONO" class="form-control" placeholder="Telefono"required>
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +247,7 @@ include 'header.php';
                                         <i class="notika-icon notika-mail"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="email" name="FACTURACION_EMAIL" value="CONTACT@CONTACTO.COM"  class="form-control" placeholder="Email"required>
+                                        <input type="text" name="FACTURACION_EMAIL"  class="form-control" placeholder="Email"required>
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +263,7 @@ include 'header.php';
                     <div class="form-element-list">
                         <div class="basic-tb-hd">
                             <h2>CONTACTO AREA DE TESORERIA</h2>
-                            <p>* Favor de verificar que los datos ingresados sean los correctos.</p>
+                            <p>* Favor de verificar que los datos ingresados sean los correctos, el sistema utilizara el email registrados alertas automaticas de facturas proximas a vencer.</p>
                         </div>
 
                         <div class="row">
@@ -246,7 +273,7 @@ include 'header.php';
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text"  name="TESORERIA_NOMBRES" value="NAME TESORERIA" class="form-control" placeholder="Nombres"required>
+                                        <input type="text"  name="TESORERIA_NOMBRES"  class="form-control" placeholder="Nombres"required>
                                     </div>
                                 </div>
                             </div>
@@ -256,7 +283,7 @@ include 'header.php';
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="TESORERIA_APELLIDOS" value="APELLIDOS TESORERIA" class="form-control" placeholder="Apellidos"required>
+                                        <input type="text" name="TESORERIA_APELLIDOS" class="form-control" placeholder="Apellidos"required>
                                     </div>
                                 </div>
                             </div>
@@ -266,32 +293,35 @@ include 'header.php';
                                         <i class="notika-icon notika-phone"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text"  name="TESORERIA_TELEFONO" value="88888888" class="form-control" placeholder="Telefono"required>
+                                        <input type="text"  name="TESORERIA_TELEFONO" class="form-control" placeholder="Telefono"required>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-mail"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="email" name="TESORERIA_EMAIL" value="tesoreria@email.com" class="form-control" placeholder="Email"required>
+                                        <input type="text" name="TESORERIA_EMAIL"  class="form-control" placeholder="Email de contacto tesoreria..."required>
+                                        <small>* Si el cliente tiene mas de un email, registrarlo separados por coma. Ejemplo<strong> "email1@gmail.com,email2@gmail.com"</strong></small>
+                                        <input type="hidden" name="USUARIO_CREADOR" value="<?php echo $nombres;?>" class="form-control" required>
+                            
                                     </div>
                                 </div>
                             </div>
                 
                         </div>
-                        <button type="button" class="btn btn-danger">Crear Cliente Corporativo</button>
+                       
                     </div>
                     
                 </div>
 
                 
             </div>
-           
+            <button type="submit"  name="agregar" class="btn btn-danger"><i class="fa fa-plus-circle" aria-hidden="true"></i> Crear Cliente Corporativo</button>
             </form>
         </div>
     </div>

@@ -8,7 +8,25 @@ $fecha_actual = date("d-m-Y h:i:s");
 	include '../config/Conexion.php';
 	if(isset($_POST['editar'])){
 
+
 		try{
+
+            if(isset($_FILES['documento']) && $_FILES['documento']['type']=='application/pdf'){
+
+                $imgFile = $_FILES['documento']['name'];
+                $tmp_dir = $_FILES['documento']['tmp_name'];
+                $upload_dir = '../public/procedimientos/'; // upload directory
+                $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
+                $proceso_name = rand(1000,1000000).".".$imgExt;
+                //move_uploaded_file ($_FILES['documento']['tmp_name'] , '../public/procedimientos/'.$_FILES['documento']['name']);
+                move_uploaded_file($tmp_dir,$upload_dir.$proceso_name);
+                $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
+            
+                // rename uploading image
+            
+                            
+            }
+
 			$id = $_GET['id'];
 			$EMPRESA_RUC= $_POST['EMPRESA_RUC'];
             $EMPRESA_RAZON_SOCIAL= $_POST['EMPRESA_RAZON_SOCIAL'];
@@ -33,6 +51,9 @@ $fecha_actual = date("d-m-Y h:i:s");
             $TESORERIA_EMAIL= $_POST['TESORERIA_EMAIL'];
             $USUARIO_ACTUALIZADOR= $_POST['USUARIO_ACTUALIZADOR'];
 
+            $TIPO_EMISION_CE= $_POST['TIPO_EMISION_CE'];
+           // $PROCEDIMIENTO_EMISION_CE= $proceso_name;//$_POST['PROCEDIMIENTO_EMISION_CE'];
+
 			$sql = "UPDATE SALES_CORPORATE.CLIENTE.CLIENTE_CORPORATIVO SET  EMPRESA_RUC = '$EMPRESA_RUC',
             EMPRESA_RAZON_SOCIAL = '$EMPRESA_RAZON_SOCIAL',
             EMPRESA_DIRECCION_FISCAL = '$EMPRESA_DIRECCION_FISCAL',
@@ -55,10 +76,13 @@ $fecha_actual = date("d-m-Y h:i:s");
             TESORERIA_TELEFONO = '$TESORERIA_TELEFONO',
             TESORERIA_EMAIL = '$TESORERIA_EMAIL',
             USUARIO_ACTUALIZADOR = '$USUARIO_ACTUALIZADOR',
-            ULTIMA_ACTUALIZACION=GETDATE()
+            ULTIMA_ACTUALIZACION=GETDATE(),
+            TIPO_EMISION_CE='$TIPO_EMISION_CE',
+            PROCEDIMIENTO_EMISION_CE='$proceso_name'
+
 			WHERE ID_CORPO= '$id'";
 			//if-else statement in executing our query
-			$_SESSION['message'] = ( $db->exec($sql) ) ? 'Cliente Corporativo actualizado con éxito!' : 'No se puso actualizar el Cliente Corporativo.';
+			$_SESSION['message'] = ( $db->exec($sql) ) ? 'Datos Fiscales del Customer Corporate actualizados de manera correcta.' : 'No se puso actualizar el Cliente Corporativo.';
 
 		}
 		catch(PDOException $e){

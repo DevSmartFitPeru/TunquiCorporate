@@ -299,7 +299,7 @@ $ubigeo_sunat = $data['data']['ubigeo_sunat'];
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-mail"></i>
@@ -312,8 +312,27 @@ $ubigeo_sunat = $data['data']['ubigeo_sunat'];
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-mail"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                    <select name="TIPO_EMISION_CE" id="customer" class="form-control" required>
+  <option value="">Seleccione:</option>
+  <option value="REGULAR">Emisión Regular</option>
+  <option value="PARTICULAR">Emisión Particular (Desea el envio de XML y PDF vía proceso interno.)</option>
+</select>
+<small>Tipo de Recepción de Documento Fiscales Solicitado por el cliente.</small>
+    <input type="file" id="file" name="documento" multiple required="required" accept="application/pdf"/>
+                                    </div>
+                                </div>
+                            </div>
                 
                         </div>
+
+                       
                        
                     </div>
                     
@@ -321,7 +340,7 @@ $ubigeo_sunat = $data['data']['ubigeo_sunat'];
 
                 
             </div>
-            <button type="submit"  name="agregar" class="btn btn-danger"><i class="fa fa-plus-circle" aria-hidden="true"></i> Crear Cliente Corporativo</button>
+            <button type="submit"  name="agregar" class="btn btn-danger" onclick="validarFormulario();"><i class="fa fa-plus-circle" aria-hidden="true"></i> Crear Cliente Corporativo</button>
             </form>
         </div>
     </div>
@@ -334,3 +353,32 @@ $ubigeo_sunat = $data['data']['ubigeo_sunat'];
    <?php
    include 'footer.php';
    ?>
+   <script type="text/javascript">
+
+function validarFormulario() {
+ 
+    var usuario = document.getElementById('customer').value;
+    var pdf = document.getElementById('file');
+
+  
+ if(usuario=="REGULAR") {
+    alert('Facturacion Regular');
+    pdf.disabled = true;
+   
+  }
+  if(usuario=="PARTICULAR") {
+   // alert('Favor de adjuntar el procedimiento en formado PDF.');
+   Swal.fire(
+  'Tesorería Informa',
+  'Favor de adjuntar el procedimiento enviado por el cliente en PDF, con el fin de emitir los documentos electrónicos de manera correcta.<br><strong>Saludos,<br>Team de Facturación y Cuentas por Cobrar - Smart Fit.',
+  'success'
+)
+    pdf.focus();
+    pdf.disabled = false;
+   
+  }
+
+  this.submit();
+}
+
+   </script>

@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="../controlador/update_datos_fiscales_sunat.php?id=<?php echo $row['ID_CORPO']; ?>" method="post">
+      <form action="../controlador/update_datos_fiscales_sunat.php?id=<?php echo $row['ID_CORPO']; ?>" method="post" enctype="multipart/form-data">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">EMPRESA_RUC:</label>
@@ -128,10 +128,21 @@
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-6">
       <label for="inputCity">TESORERIA_EMAIL</label>
       <input type="text" name="TESORERIA_EMAIL" value="<?php echo $row['TESORERIA_EMAIL'];?>" class="form-control" rrequired>
       <input type="hidden" name="USUARIO_ACTUALIZADOR" value="<?php echo $nombres;?>" class="form-control" required>
+    </div>
+
+    <div class="form-group col-md-6">
+    <label for="inputCity">TIPO_EMISIÓN CE:</label>
+    <select name="TIPO_EMISION_CE" id="customer" class="form-control" required>
+  <option value="">Seleccione:</option>
+  <option value="REGULAR">Emisión Regular</option>
+  <option value="PARTICULAR">Emisión Particular (Desea el envio de XML y PDF vía proceso interno.)</option>
+</select>
+<small>Tipo de Recepción de Documento Fiscales.</small>
+    <input type="file" id="file" name="documento" multiple required="required" accept="application/pdf"/>
     </div>
   </div>
 

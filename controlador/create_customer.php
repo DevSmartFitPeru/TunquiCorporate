@@ -2,12 +2,31 @@
 session_start();
 include_once('../config/conexion.php');
 
+
 if(isset($_POST['agregar'])){
 	try{
 
 $recepcion_variable = $_POST['EMPRESA_RUC'];
 $razon_social = $_POST['EMPRESA_RAZON_SOCIAL'];
 $user = $_POST['USUARIO_CREADOR'];
+
+//Manual de Procedimiento
+
+if(isset($_FILES['documento']) && $_FILES['documento']['type']=='application/pdf'){
+
+	$imgFile = $_FILES['documento']['name'];
+	$tmp_dir = $_FILES['documento']['tmp_name'];
+	$upload_dir = '../public/procedimientos/'; // upload directory
+	$imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
+	$proceso_name = rand(1000,1000000).".".$imgExt;
+	//move_uploaded_file ($_FILES['documento']['tmp_name'] , '../public/procedimientos/'.$_FILES['documento']['name']);
+	move_uploaded_file($tmp_dir,$upload_dir.$proceso_name);
+	$imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
+
+	// rename uploading image
+
+				
+}
 
 //Nueva validación
 
@@ -41,7 +60,7 @@ if ($resultado = $db->query($sql)) {
 			TESORERIA_APELLIDOS,
 			TESORERIA_TELEFONO,
 			TESORERIA_EMAIL,
-			USUARIO_CREADOR) VALUES (:EMPRESA_RUC,
+			USUARIO_CREADOR,TIPO_EMISION_CE,PROCEDIMIENTO_EMISION_CE) VALUES (:EMPRESA_RUC,
 			:EMPRESA_RAZON_SOCIAL,
 			:EMPRESA_DIRECCION_FISCAL,
 			:EMPRESA_ESTADO,
@@ -62,7 +81,8 @@ if ($resultado = $db->query($sql)) {
 			:TESORERIA_APELLIDOS,
 			:TESORERIA_TELEFONO,
 			:TESORERIA_EMAIL,
-			:USUARIO_CREADOR)");
+			:USUARIO_CREADOR,
+			:TIPO_EMISION_CE,'$proceso_name')");
 	//instrucción if-else en la ejecución de nuestra declaración preparada
 	$_SESSION['message'] = ( $stmt->execute(array(
 		':EMPRESA_RUC' => $_POST['EMPRESA_RUC'], 
@@ -86,7 +106,8 @@ if ($resultado = $db->query($sql)) {
 		':TESORERIA_APELLIDOS' => $_POST['TESORERIA_APELLIDOS'], 
 		':TESORERIA_TELEFONO' => $_POST['TESORERIA_TELEFONO'], 
 		':TESORERIA_EMAIL' => $_POST['TESORERIA_EMAIL'], 
-		':USUARIO_CREADOR' => $_POST['USUARIO_CREADOR']
+		':USUARIO_CREADOR' => $_POST['USUARIO_CREADOR'],
+		':TIPO_EMISION_CE' => $_POST['TIPO_EMISION_CE']
 	)) ) ? 'El cliente corporativo con <strong> RUC '.$recepcion_variable.' </strong> con razón social <strong> '.$razon_social.'</strong>  fue registrado de manera exitosa!!!<br><strong>Saludos,<br> Team de Sistemas y Aplicaciones' : 'Algo salió mal. No se puedo crear al cliente corporativo, favor informar al team de Sistemas y Aplicaciones a la brevedad.';	
 	header('Location: ../views/view-cliente');
     }
@@ -99,4 +120,5 @@ if ($resultado = $db->query($sql)) {
 else{
 	$_SESSION['message'] = 'Llene el formulario';
 }
+
 ?>

@@ -64,6 +64,8 @@ Swal.fire(
                                     <tr>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">#</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">EDITAR</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">PROCEDIMIENTO</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">TIPO EMISION CE</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">EMPRESA_RUC</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">EMPRESA_RAZON_SOCIAL</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">EMPRESA_DIRECCION_FISCAL</th>
@@ -119,14 +121,26 @@ Swal.fire(
                                 USUARIO_CREADOR,
                                 USUARIO_ACTUALIZADOR,
                                 ULTIMA_ACTUALIZACION,
-                                FECHA_CREACION FROM SALES_CORPORATE.CLIENTE.CLIENTE_CORPORATIVO
+                                FECHA_CREACION,PROCEDIMIENTO_EMISION_CE,TIPO_EMISION_CE FROM SALES_CORPORATE.CLIENTE.CLIENTE_CORPORATIVO
                                 ";
                                 foreach ($db->query($sql) as $row) {
+                                $tipo_customer = $row['TIPO_EMISION_CE'];
+
+                                    switch ($tipo_customer) {
+                                        case "PARTICULAR":
+                                        $variable_pdf = "enabled";
+                                          break;
+                                        default:
+                                        $variable_pdf = "disabled";
+                                      }
+
 					                     ?>
 
                                     <tr>
                                     <td><?php echo $row['ID_CORPO']; ?></td>
                                     <td><a href="#edit_<?php echo $row['ID_CORPO']; ?>" class="btn btn-success btn-sm " data-toggle="modal" ><i class="fa fa-check-square-o" aria-hidden="true"></i> Actualizar Datos</td>
+                                    <td><a href="../public/procedimientos/<?php echo $row['PROCEDIMIENTO_EMISION_CE']; ?>" class="btn btn-danger" <?php echo $variable_pdf;?> target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> VER PDF</a></td>
+                                    <td><?php echo $row['TIPO_EMISION_CE']; ?></td>
                                     <td><?php echo $row['EMPRESA_RUC']; ?></td>
                                     <td><?php echo $row['EMPRESA_RAZON_SOCIAL']; ?></td>
                                     <td><?php echo $row['EMPRESA_DIRECCION_FISCAL']; ?></td>
@@ -168,6 +182,8 @@ Swal.fire(
                                     <tr>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">#</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">EDITAR</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">PROCEDIMIENTO</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">TIPO EMISION CE</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">EMPRESA_RUC</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">EMPRESA_RAZON_SOCIAL</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">EMPRESA_DIRECCION_FISCAL</th>

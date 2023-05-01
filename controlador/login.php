@@ -51,14 +51,14 @@ if($result === false){
    switch ($variable_config) {
         case "LIMCOR1-CENTRAL":
          $token=sha1(md5("Autorizacion"));
-         header("location: ../views/view-cliente");
+         header("location: ../views/dashboard");
          case "SMFERP1-SMART ERP":
             $token=sha1(md5("Autorizacion"));
-            header("location: ../views/view-cliente");
+            header("location: ../views/dashboard");
         break;
         case "LIMADM1-ADMINISTRADOR SMARTFIT":
          $token=sha1(md5("Autorizacion"));
-         header("location: ../views/view-cliente");
+         header("location: ../views/dashboard");
      break;
         default:
         $token=sha1(md5("Autorizacion"));

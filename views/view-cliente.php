@@ -33,7 +33,7 @@ Swal.fire(
 									</div>
 									<div class="breadcomb-ctn">
 										<h2>Maestro Clientes Corporativos</h2>
-										<a href="consulta-ruc" class="btn btn-success active" role="button" aria-pressed="true"><i class="fa fa-user-plus" aria-hidden="true"></i> Crear Cliente Corporativo</a>
+										<a href="consulta-ruc" class="btn btn-success active btn-round" role="button" aria-pressed="true"><i class="fa fa-user-plus" aria-hidden="true"></i> Crear Cliente Corporativo</a>
 									</div>
 								</div>
 							</div>

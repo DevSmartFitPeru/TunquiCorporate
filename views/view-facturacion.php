@@ -50,9 +50,9 @@ Swal.fire(
 										<i class="notika-icon notika-windows"></i>
 									</div>
 									<div class="breadcomb-ctn">
-										<h2>Maestro Facturacion Corporativa</h2>
+										<h2>Maestro Facturación Corporativa - AR</h2>
 									
-                                        <button type="button" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-round"data-toggle="modal" data-target="#exampleModal">
 <img src="../public/imagenes/user-interface.png" width="50" height="50" />
 </button>
 									</div>

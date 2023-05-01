@@ -216,7 +216,8 @@ $area = $_SESSION["AREA"];
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     
-
+                    <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-windows"></i>Dashboard</a>
+                        </li>
                         <li><a data-toggle="tab" href="#administrador"><i class="notika-icon notika-windows"></i>Clientes Corporativos</a>
                         </li>
                         <li><a data-toggle="tab" href="#facturacion"><i class="notika-icon notika-windows"></i>Facturación</a>
@@ -232,7 +233,7 @@ $area = $_SESSION["AREA"];
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="sin_acceso">Dashboard</a>
+                                <li><a href="dashboard">Dashboard</a>
                                 </li>
                            
                             </ul>

@@ -1,8 +1,8 @@
 <div class="modal fade" id="editt_<?php echo $row['ID_FACTURACION']; ?>"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">FACTURAR CLIENTE CORPORATIVO: <?php echo $row['CLIENTE_CORPORATIVO']; ?><br>
+      <div class="modal-header text-center">
+        <h4 class="modal-title" id="exampleModalLongTitle">FACTURAR CLIENTE CORPORATIVO: <?php echo $row['CLIENTE_CORPORATIVO']; ?><br>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -11,8 +11,8 @@
       <form action="../controlador/update_facturacion.php?id=<?php echo $row['ID_FACTURACION']; ?>" method="post">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">NRO_TRANSACCION_AR:</label>
-      <input type="text" class="form-control" name="NRO_TRANSACCION_AR" value="<?php echo $row['NRO_TRANSACCION_AR']; ?>" placeholder="NRO_TRANSACCION_AR" >
+      <label for="inputEmail4"># TRANSACCION_AR:</label>
+      <input type="text" style="background-color:#0A82FA;color:#FFFFFF;" class="form-control" name="NRO_TRANSACCION_AR" value="<?php echo $row['NRO_TRANSACCION_AR']; ?>" placeholder="NRO_TRANSACCION_AR" >
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">FECHA EMISION AR</label>
@@ -41,8 +41,8 @@
     </div>
   </div>
 
-  <button type="submit" name="editar" <?php echo $flag_boton;?> class="btn btn-success">Procesar Datos Fiscales</button>
-  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+  <button type="submit" name="editar" <?php echo $flag_boton;?> class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Procesar Datos Fiscales</button>
+  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle" aria-hidden="true"></i>Close</button>
 </form>
       </div>
       <div class="modal-footer">
@@ -53,16 +53,3 @@
 </div>
 
 
-<script type="text/javascript">
-  function sumar (valor) {
-    var total = 0;	
-    valor = parseInt(valor); // Convertir el valor a un entero (número).
-    total = document.getElementById('spTotal').innerHTML;
-    // Aquí valido si hay un valor previo, si no hay datos, le pongo un cero "0".
-    total = (total == null || total == undefined || total == "") ? 0 : total;
-    /* Esta es la suma. */
-    total = (parseInt(total) + parseInt(valor));
-    // Colocar el resultado de la suma en el control "span".
-    document.getElementById('spTotal').innerHTML = total;
-}
-</script>

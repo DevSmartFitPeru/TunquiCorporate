@@ -79,7 +79,7 @@ Swal.fire(
                     <div class="data-table-list">
                         <div class="basic-tb-hd">
                       
-                            <p>La información que se muestra a continiación, corresponde a solicitudes del periodo actual.</p>
+                            <p>La información que se muestra a continuación, corresponde a solicitudes del periodo actual.</p>
                         </div>
                         <div class="table-responsive">
                             <table id="example" class="table table-striped">
@@ -88,6 +88,8 @@ Swal.fire(
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">#</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">FACTURACION</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">REGULARIZAR DEUDA</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">PDF RECEPCION CE</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">TIPO EMISION CE</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">CLIENTE_CORPORATIVO</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">TIPO_DE_CODIGO</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">DESCRIPCION</th>
@@ -136,7 +138,7 @@ Swal.fire(
                                 USUARIO_SOLICITANTE,
                                 USUARIO_FACTURADOR,
                                 FECHA_FACTURACION_SISTEMA,
-                                FECHA_CREACION FROM SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA]
+                                FECHA_CREACION,TIPO_EMISION_CE,PROCEDIMIENTO_EMISION_CE FROM SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA]
                                 ";
                                 foreach ($db->query($sql) as $row) {
                                     $variable = $row['ESTADO'];
@@ -147,12 +149,26 @@ Swal.fire(
                                     default:
                                         $color_tabla = "#15BE10 ";
                                     }
+
+                                    $tipo_customer = $row['TIPO_EMISION_CE'];
+
+                                    switch ($tipo_customer) {
+                                        case "PARTICULAR":
+                                        $variable_pdf = "enabled";
+                                          break;
+                                        default:
+                                        $variable_pdf = "disabled";
+                                      }
+
+
 					                     ?>
 
                                     <tr>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;" ><?php echo $row['ID_FACTURACION']; ?></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="#editt_<?php echo $row['ID_FACTURACION']; ?>" class="btn btn-danger btn-sm " data-toggle="modal" <?php echo $flag_boton;?>><i class="fa fa-file-pdf-o" aria-hidden="true"></i> FACTURAR</td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="#deuda_<?php echo $row['ID_FACTURACION']; ?>" class="btn btn-danger btn-sm " data-toggle="modal" <?php echo $flag_boton;?>><i class="fa fa-cc-visa" aria-hidden="true"></i>REGULARIZAR DEUDA</td>
+                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="../public/procedimientos/<?php echo $row['PROCEDIMIENTO_EMISION_CE']; ?>" class="btn btn-danger" <?php echo $variable_pdf;?> target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> VER PDF</a></td>
+                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['TIPO_EMISION_CE']; ?></td>             
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['CLIENTE_CORPORATIVO']; ?></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['TIPO_DE_CODIGO']; ?></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['DESCRIPCION']; ?></td>
@@ -192,6 +208,8 @@ Swal.fire(
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">#</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">FACTURACION</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">REGULARIZAR DEUDA</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">PDF RECEPCION CE</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">TIPO EMISION CE</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">CLIENTE_CORPORATIVO</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">TIPO_DE_CODIGO</th>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">DESCRIPCION</th>

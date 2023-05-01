@@ -17,10 +17,10 @@
       <select name="CLIENTE_CORPORATIVO"  class="form-control" required>
       <?php                         include '../config/conexion.php';
 
-                                    $sql = "SELECT  EMPRESA_RUC,EMPRESA_RAZON_SOCIAL FROM SALES_CORPORATE.CLIENTE.CLIENTE_CORPORATIVO
+                                    $sql = "SELECT  EMPRESA_RUC,EMPRESA_RAZON_SOCIAL,TESORERIA_EMAIL,TIPO_EMISION_CE,PROCEDIMIENTO_EMISION_CE FROM SALES_CORPORATE.CLIENTE.CLIENTE_CORPORATIVO
                                     ORDER BY EMPRESA_RAZON_SOCIAL ASC";
                                             foreach ($db->query($sql) as $row) {
-                                    echo '<option value="'.$row['EMPRESA_RUC'].'-'.$row['EMPRESA_RAZON_SOCIAL'].'">'.$row['EMPRESA_RAZON_SOCIAL'].'</option>';
+                                    echo '<option value="'.$row['EMPRESA_RUC'].'|'.$row['EMPRESA_RAZON_SOCIAL'].'|'.$row['TESORERIA_EMAIL'].'|'.$row['TIPO_EMISION_CE'].'|'.$row['PROCEDIMIENTO_EMISION_CE'].'">'.$row['EMPRESA_RAZON_SOCIAL'].'</option>';
                                     }
                                     //$database->close();
                                     ?>
@@ -42,8 +42,12 @@
 
   <div class="form-row">
     <div class="form-group col-md-12">
-      <label for="inputCity">* DESCRIPCIÓN</label>
-      <input type="text" name="DESCRIPCION"  class="form-control" placeholder="Ingresar la descripcion de la facturación" required>
+      <label for="inputCity">* DESCRIPCIÓN DE LA FACTURA ELECTRÓNICA</label>
+
+      <textarea name="DESCRIPCION" rows="4" cols="72" maxlength="300" onkeyup="countChars(this);" required>
+
+</textarea>
+<p id="charNum"></p>
     </div>
   </div>
 
@@ -131,4 +135,9 @@ function multiplicar(){
   r = m1*m2;
   document.getElementById("resultado").value = r;
 }
+
+function countChars(obj){
+    document.getElementById("charNum").innerHTML = obj.value.length+' caracteres procesados de 300 que es el máximo permitido por SOVOS.';
+}
+
 </script>

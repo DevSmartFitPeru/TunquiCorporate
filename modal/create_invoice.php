@@ -50,7 +50,7 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputCity">*CANTIDAD</label>
-      <input type="text" name="CANTIDAD" class="form-control" placeholder="Cantidad" required>
+      <input type="text" name="CANTIDAD" id="multiplicando" onchange="multiplicar(this.value);" class="form-control" placeholder="Cantidad" required>
 
     </div>
 
@@ -59,7 +59,7 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputCity">* PRECIO_UNITARIO:</label>
-      <input type="text" name="PRECIO_UNITARIO" class="form-control" placeholder="Precio" required>
+      <input type="text" name="PRECIO_UNITARIO" id="multiplicador" onchange="multiplicar(this.value);" class="form-control" placeholder="Precio" required>
     </div>
 
   </div>
@@ -67,9 +67,8 @@
   
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputCity">TOTAL:</label>
-      <input type="text" name="IMPORTE_TOTAL" class="form-control" placeholder="Importe">
-
+      <label for="inputCity">IMPORTE TOTAL:</label>
+      <input type="text" style="background-color:#0AA3FA;color:#FFFFFF;" name="IMPORTE_TOTAL" id="resultado" class="form-control" placeholder="Importe">
     </div>
 
   </div>
@@ -124,3 +123,12 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+function multiplicar(){
+  m1 = document.getElementById("multiplicando").value;
+  m2 = document.getElementById("multiplicador").value;
+  r = m1*m2;
+  document.getElementById("resultado").value = r;
+}
+</script>

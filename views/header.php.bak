@@ -272,7 +272,18 @@ $area = $_SESSION["AREA"];
 
                             </ul>
                         </div>
-						
+						<div>
+						   <div id="manual" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                             
+                                <li><a href="../manual/TUNQUI_CORPORATE.pdf" target="_blank"><img src="../manual/archivo-pdf.png" width="50" height="30" /> Ver Manual</a>
+                                </li>
+                                
+                                
+                            </ul>
+                        </div>
+                     
+					 
                         <div id="cuadratura" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                              

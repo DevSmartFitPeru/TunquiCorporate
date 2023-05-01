@@ -1,4 +1,4 @@
-<?php
+<?PHP
 error_reporting(0);
 ?>
 
@@ -23,7 +23,7 @@ error_reporting(0);
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">IMPORTE_PENDIENTE_PAGO</label>
-      <input type="text" name="IMPORTE_PENDIENTE_PAGO" value="<?php echo $row['IMPORTE_PENDIENTE_PAGO'];?>" placeholder="Importe" class="form-control">
+      <input type="text" name="IMPORTE_PENDIENTE_PAGO" value="<?php echo $row['IMPORTE_PENDIENTE_PAGO'];?>" placeholder="Importe" class="form-control" required>
     </div>
   </div>
   <div class="form-row">
@@ -35,7 +35,6 @@ error_reporting(0);
   <option value="DEPOSITO EN CUENTA">DEPOSITO EN CUENTA</option>
   <option value="PLIN">Plin</option>
   <option value="YAPE">Yape</option>
-  <option value="Pendiente de Pago">Pendiente de Pago</option>
 </select>
     </div>
   </div>

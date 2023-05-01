@@ -133,7 +133,7 @@ $ubigeo_sunat = $data['data']['ubigeo_sunat'];
                                         <i class="notika-icon  notika-next"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="EMPRESA_UBIGEO" value="<?php echo $ubigeo_sunat?>" class="form-control" placeholder="UBIGEO"required>
+                                        <input type="text" name="EMPRESA_UBIGEO" value="0000" class="form-control" placeholder="UBIGEO"required>
                                     </div>
                                 </div>
                             </div>

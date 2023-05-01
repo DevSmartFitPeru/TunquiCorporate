@@ -12,22 +12,22 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">NRO_TRANSACCION_AR:</label>
-      <input type="text" class="form-control" name="NRO_TRANSACCION_AR" value="<?php echo $row['NRO_TRANSACCION_AR']; ?>" placeholder="NRO_TRANSACCION_AR" required>
+      <input type="text" class="form-control" name="NRO_TRANSACCION_AR" value="<?php echo $row['NRO_TRANSACCION_AR']; ?>" placeholder="NRO_TRANSACCION_AR" >
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">FECHA EMISION AR</label>
-      <input type="date" class="form-control" name ="FECHA_EMISION_AR"   value="<?php echo $row['FECHA_EMISION_AR']; ?>" placeholder="# Nro. AP" required>
+      <input type="date" class="form-control" name ="FECHA_EMISION_AR"   value="<?php echo $row['FECHA_EMISION_AR']; ?>" placeholder="Fecha emision" >
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">NRO_COMPROBANTE_AR</label>
-      <input type="text" name="NRO_COMPROBANTE_AR" value="<?php echo $row['NRO_COMPROBANTE_AR'];?>" placeholder="# documento fiscal" class="form-control" rrequired>
+      <input type="text" name="NRO_COMPROBANTE_AR" value="<?php echo $row['NRO_COMPROBANTE_AR'];?>" placeholder="# documento fiscal" class="form-control">
     </div>
     <div class="form-group col-md-6">
       <label for="inputState">LINK PDF:</label>
-      <input type="text" name="LINK_PDF" value="<?php echo $row['LINK_PDF'];?>" class="form-control" placeholder="URL PDF" required>
+      <input type="text" name="LINK_PDF" value="<?php echo $row['LINK_PDF'];?>" class="form-control" placeholder="URL PDF" >
     </div>
 
   </div>

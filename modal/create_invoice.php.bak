@@ -68,7 +68,7 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputCity">TOTAL:</label>
-      <input type="text" name="IMPORTE_TOTAL" class="form-control" placeholder="Importe">
+      <input type="number" name="IMPORTE_TOTAL" class="form-control" placeholder="Importe">
 
     </div>
 

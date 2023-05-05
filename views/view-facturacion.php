@@ -102,6 +102,7 @@ Swal.fire(
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">NRO_TRANSACCION_AR</th>
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">FECHA_EMISION_AR</th>
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">NRO_COMPROBANTE_AR</th>
+                                    <th style="background-color:#FFA743;;color:#FFFFFF;">OSE</th>
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">LINK_PDF</th>
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">COMENTARIO</th>
                                     <th style="background-color:#FF4943;;color:#FFFFFF;">FECHA_VENCIMIENTO_INVOICE</th>
@@ -138,7 +139,7 @@ Swal.fire(
                                 USUARIO_SOLICITANTE,
                                 USUARIO_FACTURADOR,
                                 FECHA_FACTURACION_SISTEMA,
-                                FECHA_CREACION,TIPO_EMISION_CE,PROCEDIMIENTO_EMISION_CE FROM SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA]
+                                FECHA_CREACION,TIPO_EMISION_CE,PROCEDIMIENTO_EMISION_CE,ESTADO_OSE FROM SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA]
                                 ";
                                 foreach ($db->query($sql) as $row) {
                                     $variable = $row['ESTADO'];
@@ -161,13 +162,23 @@ Swal.fire(
                                       }
 
 
+                                      $status_ose = $row['ESTADO_OSE'];
+
+                                      switch ($status_ose) {
+                                          case "Documento aceptado por la OSE":
+                                          $variable_ose = "enabled";
+                                            break;
+                                          default:
+                                          $variable_ose = "disabled";
+                                        }
+
 					                     ?>
 
                                     <tr>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;" ><?php echo $row['ID_FACTURACION']; ?></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="#editt_<?php echo $row['ID_FACTURACION']; ?>" class="btn btn-danger btn-sm " data-toggle="modal" <?php echo $flag_boton;?>><i class="fa fa-file-pdf-o" aria-hidden="true"></i> FACTURAR</td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="#deuda_<?php echo $row['ID_FACTURACION']; ?>" class="btn btn-danger btn-sm " data-toggle="modal" <?php echo $flag_boton;?>><i class="fa fa-cc-visa" aria-hidden="true"></i>REGULARIZAR DEUDA</td>
-                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="../public/procedimientos/<?php echo $row['PROCEDIMIENTO_EMISION_CE']; ?>" class="btn btn-danger" <?php echo $variable_pdf;?> target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> VER PDF</a></td>
+                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="../public/procedimientos/<?php echo $row['PROCEDIMIENTO_EMISION_CE']; ?>" class="btn btn-danger" <?php echo $variable_pdf;?> target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> VER PROCEDIMIENTO</a></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['TIPO_EMISION_CE']; ?></td>             
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['CLIENTE_CORPORATIVO']; ?></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['TIPO_DE_CODIGO']; ?></td>
@@ -181,7 +192,8 @@ Swal.fire(
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['NRO_TRANSACCION_AR']; ?></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['FECHA_EMISION_AR']; ?></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['NRO_COMPROBANTE_AR']; ?></td>
-                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="<?php echo $row['LINK_PDF']; ?>"target="_blank" ><img src="../public/imagenes/pdf.png" width="40" height="50" /></a></td>
+                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['ESTADO_OSE']; ?></td>
+                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="<?php echo $row['LINK_PDF']; ?>"target="_blank" disabled><img src="../public/imagenes/pdf.png" width="40" height="50" disabled/></a></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['COMENTARIO']; ?></td>
                                     <td style="background-color:#43AAFF ;;color:#FFFFFF;"><?php echo $row['FECHA_VENCIMIENTO_INVOICE']; ?></td>
                                     <td><?php echo $row['IMPORTE_PENDIENTE_PAGO']; ?></td>
@@ -222,6 +234,7 @@ Swal.fire(
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">NRO_TRANSACCION_AR</th>
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">FECHA_EMISION_AR</th>
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">NRO_COMPROBANTE_AR</th>
+                                    <th style="background-color:#FFA743;;color:#FFFFFF;">OSE</th>
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">LINK_PDF</th>
                                     <th style="background-color:#FFA743;;color:#FFFFFF;">COMENTARIO</th>
                                     <th style="background-color:#FF4943;;color:#FFFFFF;">FECHA_VENCIMIENTO_INVOICE</th>

@@ -79,7 +79,7 @@ Swal.fire(
                     <div class="data-table-list">
                         <div class="basic-tb-hd">
                       
-                            <p>La información que se muestra a continuación, corresponde a solicitudes del periodo actual.</p>
+                            <p>La información que se muestra a continuación, corresponde a solicitudes pendientes de facturar en AR.</p>
                         </div>
                         <div class="table-responsive">
                             <table id="example" class="table table-striped">
@@ -135,11 +135,13 @@ Swal.fire(
                                 COMENTARIO,
                                 FECHA_VENCIMIENTO_INVOICE,
                                 IMPORTE_PENDIENTE_PAGO,
+                                
                                 ESTADO,
                                 USUARIO_SOLICITANTE,
                                 USUARIO_FACTURADOR,
                                 FECHA_FACTURACION_SISTEMA,
-                                FECHA_CREACION,TIPO_EMISION_CE,PROCEDIMIENTO_EMISION_CE,ESTADO_OSE FROM SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA]
+                                FECHA_CREACION,TIPO_EMISION_CE,PROCEDIMIENTO_EMISION_CE,ESTADO_OSE 
+                                FROM SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA]  WHERE ESTADO='PENDIENTE DE FACTURACION'
                                 ";
                                 foreach ($db->query($sql) as $row) {
                                     $variable = $row['ESTADO'];

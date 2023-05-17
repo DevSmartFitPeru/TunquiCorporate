@@ -18,7 +18,7 @@ $fecha_actual = date("d-m-Y h:i:s");
             
 			$sql = "UPDATE SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA] SET  FECHA_PAGO_FACTURA_CORPORATIVA = '$FECHA_PAGO_FACTURA_CORPORATIVA',
             IMPORTE_PENDIENTE_PAGO = '$IMPORTE_PENDIENTE_PAGO',
-            FORMA_PAGO_DEUDA = '$FORMA_PAGO_DEUDA',
+            FORMA_PAGO_DEUDA = 'TRANSFERENCIA INTERBANCARIA',--'$FORMA_PAGO_DEUDA',
             ESTADO ='$ESTADO'
 			WHERE ID_FACTURACION= '$id'";
 			//if-else statement in executing our query
@@ -34,6 +34,6 @@ $fecha_actual = date("d-m-Y h:i:s");
 		$_SESSION['message'] = 'Complete el formulario de edición';
 	}
 
-	header('location: ../views/view-facturacion');
+	header('location: ../views/regularizacion_deuda');
 
 ?>

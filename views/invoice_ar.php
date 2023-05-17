@@ -51,7 +51,11 @@ $fecha_fin = $_GET["fecha_fin"];
             <th>COMENTARIO</th>
             <th>FECHA_VENCIMIENTO_INVOICE</th>
             <th>IMPORTE_PENDIENTE_PAGO</th>
+            <th>IMPORTE_PAGADO</th>
+            
             <th>ESTADO</th>
+            <th>ESTADO FACTURA</th>
+            <th>ESTADO DEUDA</th>
             <th>USUARIO_SOLICITANTE</th>
             <th>USUARIO_FACTURADOR</th>
             <th>FECHA_FACTURACION_SISTEMA</th>
@@ -81,11 +85,13 @@ $fecha_fin = $_GET["fecha_fin"];
                                 COMENTARIO,
                                 FECHA_VENCIMIENTO_INVOICE,
                                 IMPORTE_PENDIENTE_PAGO,
+                                IMPORTE_PAGADO,
                                 ESTADO,
+                                ESTADO_DE_FACTURA,ESTADO_DEUDA,
                                 USUARIO_SOLICITANTE,
                                 USUARIO_FACTURADOR,
                                 FECHA_FACTURACION_SISTEMA,
-                                FECHA_CREACION
+                                FECHA_CREACION,IMPORTE_PAGADO
                                  FROM SALES_CORPORATE.CLIENTE.FACTURACION_CORPORATIVA WHERE FECHA_EMISION_AR BETWEEN '$fecha_inicio' AND '$fecha_fin'";
                                 foreach ($db->query($sql) as $row) {
 					                     ?>
@@ -107,7 +113,11 @@ $fecha_fin = $_GET["fecha_fin"];
                                 <td><?php echo $row['COMENTARIO']; ?></td>
                                 <td><?php echo $row['FECHA_VENCIMIENTO_INVOICE']; ?></td>
                                 <td><?php echo $row['IMPORTE_PENDIENTE_PAGO']; ?></td>
+                                <td><?php echo $row['IMPORTE_PAGADO']; ?></td>
+                                
                                 <td><?php echo $row['ESTADO']; ?></td>
+                                <td><?php echo $row['ESTADO_DE_FACTURA']; ?></td>
+                                <td><?php echo $row['ESTADO_DEUDA']; ?></td>
                                 <td><?php echo $row['USUARIO_SOLICITANTE']; ?></td>
                                 <td><?php echo $row['USUARIO_FACTURADOR']; ?></td>
                                 <td><?php echo $row['FECHA_FACTURACION_SISTEMA']; ?></td>
@@ -144,7 +154,10 @@ $fecha_fin = $_GET["fecha_fin"];
             <th>COMENTARIO</th>
             <th>FECHA_VENCIMIENTO_INVOICE</th>
             <th>IMPORTE_PENDIENTE_PAGO</th>
+            <th>IMPORTE_PAGADO</th>
             <th>ESTADO</th>
+            <th>ESTADO FACTURA</th>
+            <th>ESTADO DEUDA</th>
             <th>USUARIO_SOLICITANTE</th>
             <th>USUARIO_FACTURADOR</th>
             <th>FECHA_FACTURACION_SISTEMA</th>

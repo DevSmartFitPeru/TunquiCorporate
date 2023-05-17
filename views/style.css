@@ -3575,7 +3575,7 @@ textarea.auto-size {
     background-size:     cover;                    
    background-repeat:   no-repeat;
    background-position: center center;
-    background-image: url("../public/imagenes/fondo_dashboard.jpeg");
+    background-image: url("../public/imagenes/corporate.jpg");
 }
 .login-content:before, .error-page-area:before{
     content:'';

@@ -83,7 +83,7 @@ $error=sha1(md5("Error"));
         <!-- Login -->
         <div class="nk-block toggled" id="l-login">
             <div class="nk-form" style="border-radius: 15px;">
-                <h3 style="color:#1C1C1C;"><u>SmartTunqui "Corporate"</u></h3>
+                <h3 style="color:#1C1C1C;">SmartTunqui "Corporate"</h3>
                 <form   method="POST" action="../controlador/login.php">
             <img src="../public/imagenes/logo/logo-dark.svg" width="150">
             <br>
@@ -102,12 +102,10 @@ $error=sha1(md5("Error"));
                         <small>Password: Documento de identidad.</small>
                     </div>
                 </div>
-                <small style="color:#1C1C1C;">* Gestión y Administración de Ventas Corporativas V.1.2 (Producción)</small>
+                <small style="color:#1C1C1C;">* Gestión y Administración de Ventas Corporativas V.2.2 (2023-05-15 Producción)</small>
              
                 <button type="submit" name="submitBtnLogin" id="submitBtnLogin" class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-handshake-o" aria-hidden="true"></i> Ver Cambios Nueva Versión 1.2
-</button>
+ 
             </div>
 
             </form>
@@ -190,20 +188,13 @@ $error=sha1(md5("Error"));
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h5 class="modal-title" id="exampleModalLabel">NUEVA VERSION 2.1 - SMART TUNQUI CORPORATE</h5>
+        <h5 class="modal-title" id="exampleModalLabel">NUEVA VERSION 2.2 - SMART TUNQUI CORPORATE</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-<strong>* Requerimiento 1.: </strong>Adjuntar el proceso de recepción y registro de CPE, en caso aplique la particularidad en la creación del cliente.<br>
-<strong>Status Requerimiento 1:</strong> Solicitud Implementada, se permite adjuntar un archivo PDF al momento de crear al cliente.<br>
-<strong>* Requerimiento 2.:</strong>Los totales deben salir automáticos (la cantidad multiplicada por el precio) y considerar los decimales. <br>
-<strong>Status Requerimiento 2:</strong> Solicitud Implementada, los calculos son online.<br>
-<strong>* Requerimiento 3.: </strong>Agregar el TAB LINE, para agregar las líneas para el campo de descripción en la solicitud de facturación, de acuerdo a lo conversado en la reunión. <br>
-<strong>Status Requerimiento 3:</strong> Solicitud Implementada, se agrego delimitador success.<br>
-<strong>* Requerimiento 4.: </strong>Alertar error de espacio o caracteres especiales, para los textos tanto en la creación de clientes y solicitud de facturación. <br>
-<strong>Status Requerimiento 4:</strong> Solicitud Implementada, se agrego un contador y se restringio hasta 300 caracateres de acuerdo a las estructuras de Oracle.<br>
+<strong>* Requerimientos: </strong>Se solicita el envio de alertas con el speech indicado por tesoreria y SAC. (Status Desarrollado)<br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

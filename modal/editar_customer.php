@@ -142,7 +142,7 @@
   <option value="PARTICULAR">Emisión Particular (Desea el envio de XML y PDF vía proceso interno.)</option>
 </select>
 <small>Tipo de Recepción de Documento Fiscales.</small>
-    <input type="file" id="file" name="documento" multiple required="required" accept="application/pdf"/>
+    <input type="file" id="file" name="documento" multiple accept="application/pdf"/>
     </div>
   </div>
 

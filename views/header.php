@@ -220,7 +220,7 @@ $area = $_SESSION["AREA"];
                         </li>
                         <li><a data-toggle="tab" href="#administrador"><i class="notika-icon notika-windows"></i>Clientes Corporativos</a>
                         </li>
-                        <li><a data-toggle="tab" href="#facturacion"><i class="notika-icon notika-windows"></i>Facturación</a>
+                        <li><a data-toggle="tab" href="#facturacion"><i class="notika-icon notika-windows"></i>Facturación AR</a>
                         </li>
            
                         <li><a data-toggle="tab" href="#reporte"><i class="notika-icon notika-windows"></i>Reportes</a>
@@ -267,9 +267,10 @@ $area = $_SESSION["AREA"];
                         <div id="facturacion" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                              
-                                <li><a href="view-facturacion">Facturación Corporativa</a>
+                                <li><a href="view-facturacion">Facturación</a>
                                 </li>
-
+                                <li><a href="regularizacion_deuda">Regularizar Deuda</a>
+                                </li>
 
                             </ul>
                         </div>

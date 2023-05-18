@@ -258,7 +258,8 @@ $area = $_SESSION["AREA"];
                                 </li>
                                 <li><a href="invoice_vencimiento">Fecha Vencimiento</a>
                                 </li>
-
+                                <li><a href="alertas_email">Auditoría de Alertas</a>
+                                </li>
 
                             </ul>
                         </div>

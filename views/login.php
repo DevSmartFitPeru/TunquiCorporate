@@ -102,7 +102,7 @@ $error=sha1(md5("Error"));
                         <small>Password: Documento de identidad.</small>
                     </div>
                 </div>
-                <small style="color:#1C1C1C;">* Gestión y Administración de Ventas Corporativas V.2.2 (2023-05-15 Producción)</small>
+                <small style="color:#1C1C1C;">* Gestión y Administración de Ventas Corporativas V.2.3 (2023-11-02 Producción)</small>
              
                 <button type="submit" name="submitBtnLogin" id="submitBtnLogin" class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></button>
  

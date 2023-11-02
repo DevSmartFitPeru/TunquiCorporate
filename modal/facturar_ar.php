@@ -41,6 +41,19 @@
     </div>
   </div>
 
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">CANTIDAD</label>
+      <input type="text" name="CANTIDAD" style="background-color:#16C0FA;color:#FFFFFF;" value="<?php echo $row['CANTIDAD'];?>" placeholder="Cantidad" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">PRECIO_UNITARIO:</label>
+      <input type="text" name="PRECIO_UNITARIO" style="background-color:#16C0FA;color:#FFFFFF;"  value="<?php echo $row['PRECIO_UNITARIO'];?>" class="form-control" placeholder="Precio Unitario" >
+    </div>
+
+  </div>
+
+
   <button type="submit" name="editar" <?php echo $flag_boton;?> class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Procesar Datos Fiscales</button>
   <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle" aria-hidden="true"></i>Close</button>
 </form>

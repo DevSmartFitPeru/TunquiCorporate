@@ -274,7 +274,7 @@ $area = $_SESSION["AREA"];
                              
                                 <li><a href="view-facturacion">Facturación</a>
                                 </li>
-                                <li><a href="regularizacion_deuda">Regularizar Deuda</a>
+                                <li><a href="regularizacion_deuda">Regularizar Deuda / Actualizar Invoice</a>
                                 </li>
 
                             </ul>

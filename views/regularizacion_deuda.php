@@ -57,7 +57,7 @@ Swal.fire(
                             <div class="form-group">
                                 <label>Criterios de la búsqueda:</label>
                                 <div class="nk-int-st">
-                                    <input type="text" name ="variable"class="form-control input-sm" required placeholder="Nro. Factura (F0XX-00000XXX) y/o numero de la transacción AR." autofocus>
+                                    <input type="text" name ="variable"class="form-control input-sm" required placeholder="Nro. Factura, Nro. TX AR y Id Facturación." autofocus>
                                 </div>
                             </div>
                         </div>
@@ -118,6 +118,7 @@ Swal.fire(
                                     <th style="background-color:#43BDFF ;;color:#FFFFFF;">USUARIO_FACTURADOR</th>
                                     <th style="background-color:#43BDFF ;color:#FFFFFF;">FECHA_FACTURACION_SISTEMA</th>
                                     <th style="background-color:#FF7343;;color:#FFFFFF;">FECHA_CREACION</th>
+                                    <th style="background-color:#FF7343;;color:#FFFFFF;">ELIMINAR</th>
 
                                     </tr>
                                 </thead>
@@ -146,7 +147,7 @@ Swal.fire(
                                 USUARIO_FACTURADOR,
                                 FECHA_FACTURACION_SISTEMA,
                                 FECHA_CREACION,TIPO_EMISION_CE,PROCEDIMIENTO_EMISION_CE,ESTADO_OSE ,IMPORTE_PAGADO,IMPORTE_PENDIENTE_PAGO,ESTADO_DEUDA
-                                FROM SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA] WHERE NRO_COMPROBANTE_AR ='$variable' OR NRO_TRANSACCION_AR ='$variable'
+                                FROM SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA] WHERE NRO_COMPROBANTE_AR ='$variable' OR NRO_TRANSACCION_AR ='$variable' OR ID_FACTURACION  ='$variable'
                                  ";
                                 foreach ($db->query($sql) as $row) {
                                     $variable = $row['ESTADO'];
@@ -169,7 +170,7 @@ Swal.fire(
                                       }
                                       $status_ose = $row['ESTADO_OSE'];
                                       switch ($status_ose) {
-                                          case "Documento aceptado por la OSE":
+                                          case "ACEPTADO_POR_LA_OSE_A_OSE":
                                           $variable_ose = "enabled";
                                             break;
                                           default:
@@ -178,7 +179,7 @@ Swal.fire(
 					                     ?>
                                     <tr>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;" ><?php echo $row['ID_FACTURACION']; ?></td>
-                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="#editt_<?php echo $row['ID_FACTURACION']; ?>" class="btn btn-danger btn-sm " data-toggle="modal" <?php echo $flag_boton;?>><i class="fa fa-file-pdf-o" aria-hidden="true"></i> FACTURAR</td>
+                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="#editt_<?php echo $row['ID_FACTURACION']; ?>" class="btn btn-danger btn-sm " data-toggle="modal" <?php echo $flag_boton;?>><i class="fa fa-file-pdf-o" aria-hidden="true"></i> - <i class="fa fa-pencil" aria-hidden="true"></i>FACTURACIÓN</td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="#deuda_<?php echo $row['ID_FACTURACION']; ?>" class="btn btn-danger btn-sm " data-toggle="modal" <?php echo $flag_boton;?>><i class="fa fa-cc-visa" aria-hidden="true"></i>REGULARIZAR DEUDA</td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="../public/procedimientos/<?php echo $row['PROCEDIMIENTO_EMISION_CE']; ?>" class="btn btn-danger" <?php echo $variable_pdf;?> target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> VER PROCEDIMIENTO</a></td>
                                     <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><?php echo $row['TIPO_EMISION_CE']; ?></td>             
@@ -204,10 +205,12 @@ Swal.fire(
                                     <td><?php echo $row['USUARIO_FACTURADOR']; ?></td>
                                     <td><?php echo $row['FECHA_FACTURACION_SISTEMA']; ?></td>
                                     <td><?php echo $row['FECHA_CREACION']; ?></td>
+                                    <td style="background-color:<?php echo $color_tabla?>;color:#FFFFFF;"><a href="#delete_<?php echo $row['ID_FACTURACION']; ?>" class="btn btn-danger btn-sm " data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i></i></td>
                                     </tr>
                                     <?php 
                                     include '../modal/facturar_ar.php';
                                     include '../modal/deuda.php';
+                                    include '../modal/delete.php';
                                         }
                                     }
                                     catch(PDOException $e){
@@ -246,6 +249,7 @@ Swal.fire(
                                     <th style="background-color:#43BDFF ;;color:#FFFFFF;">USUARIO_FACTURADOR</th>
                                     <th style="background-color:#43BDFF ;color:#FFFFFF;">FECHA_FACTURACION_SISTEMA</th>
                                     <th style="background-color:#FF7343;;color:#FFFFFF;">FECHA_CREACION</th>
+                                    <th style="background-color:#FF7343;;color:#FFFFFF;">ELIMINAR</th>
 
                                     </tr>
                                 </tfoot>

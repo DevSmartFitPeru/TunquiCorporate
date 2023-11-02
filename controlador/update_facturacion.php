@@ -20,6 +20,13 @@ $fecha_actual = date("d-m-Y h:i:s");
 
             $FORMA_DE_PAGO = $_POST['FORMA_DE_PAGO'];
 
+			/*RECEPCION DE DATOS
+
+			 */
+
+			$CANTIDAD = $_POST['CANTIDAD'];
+			$PRECIO_UNITARIO = $_POST['PRECIO_UNITARIO'];
+			
             
 			$sql = "UPDATE SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA] SET  NRO_TRANSACCION_AR = '$NRO_TRANSACCION_AR',
             FECHA_EMISION_AR = '$FECHA_EMISION_AR',
@@ -29,7 +36,10 @@ $fecha_actual = date("d-m-Y h:i:s");
             ESTADO = '$ESTADO',
             USUARIO_FACTURADOR = '$USUARIO_FACTURADOR',
             FECHA_FACTURACION_SISTEMA=GETDATE(),
-            FECHA_VENCIMIENTO_INVOICE = DATEADD(DAY,TRY_CONVERT(INT,$FORMA_DE_PAGO),GETDATE())
+            FECHA_VENCIMIENTO_INVOICE = DATEADD(DAY,TRY_CONVERT(INT,$FORMA_DE_PAGO),GETDATE()),
+			CANTIDAD='$CANTIDAD',
+			PRECIO_UNITARIO='$PRECIO_UNITARIO'
+
 			WHERE ID_FACTURACION= '$id'";
 			//if-else statement in executing our query
 			$_SESSION['message'] = ( $db->exec($sql) ) ? 'Datos fiscales procesados con exito!!!' : 'No se puso actualizar la información de la facturación en AR.';

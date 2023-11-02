@@ -22,8 +22,8 @@ include '../controlador/valorizado_fac_pagadas.php';
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow">
                         <div class="website-traffic-ctn">
-                            <h1><?php echo $total_customer ;?></h1>
-                            <p>Clientes Corporativos</p>
+                            <h1><?php echo $invoice_vencido_valor ;?></h1>
+                            <p>Valorizado Facturas Vencidas (Deuda Pendiente)</p>
                         </div>
                         <img src="../public/iconos/customer-review.png" width="100" height="100" />
                     </div>
@@ -50,7 +50,7 @@ include '../controlador/valorizado_fac_pagadas.php';
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
                             <h1><?php echo $importe_pendiente_pago;?></h1>
-                            <p>Pendiente de Cobro</p>
+                            <p>Facturas Pendiente de Cobro</p>
                         </div>
                         <img src="../public/iconos/dolar.png" width="95" height="100"/>
                     </div>

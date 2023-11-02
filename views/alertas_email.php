@@ -76,6 +76,7 @@ Swal.fire(
                                 <thead>
                                     <tr>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">ID_ALERTA</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">ID_FACTURACION</th>
 <th style="background-color:#0063AE;;color:#FFFFFF;">CLIENTE_CORPORATIVO</th>
 <th style="background-color:#0063AE;;color:#FFFFFF;">EMAIL_TESORERIA</th>
 <th style="background-color:#0063AE;;color:#FFFFFF;">LINK_PDF</th>
@@ -94,7 +95,7 @@ Swal.fire(
                                 <tbody>
                                 <?php
                                 try{	
-                                $sql = "SELECT ID_ALERTA,T1.CLIENTE_CORPORATIVO,EMAIL_TESORERIA,LINK_PDF,NRO_TRANSACCION_AR,NRO_COMPROBANTE_AR,t2.IMPORTE_TOTAL,isnull(t2.IMPORTE_PAGADO,0) IMPORTE_PAGADO,t2.IMPORTE_PENDIENTE_PAGO,FECHA_EMISION_AR,FECHA_VENCIMIENTO_INVOICE,ESTADO_DE_FACTURA,T1.FECHA_CREACION FECHA_ENVIO FROM SALES_CORPORATE.EMAIL.ALERTAS_EMAIL T1
+                                $sql = "SELECT ID_ALERTA,T2.ID_FACTURACION,T2.CLIENTE_CORPORATIVO,T2.EMAIL_VARIOS EMAIL_TESORERIA,LINK_PDF,NRO_TRANSACCION_AR,NRO_COMPROBANTE_AR,t2.IMPORTE_TOTAL,isnull(t2.IMPORTE_PAGADO,0) IMPORTE_PAGADO,t2.IMPORTE_PENDIENTE_PAGO,FECHA_EMISION_AR,FECHA_VENCIMIENTO_INVOICE,ESTADO_DE_FACTURA,T1.FECHA_CREACION FECHA_ENVIO FROM SALES_CORPORATE.EMAIL.ALERTAS_EMAIL T1
                                 LEFT JOIN SALES_CORPORATE.CLIENTE.FACTURACION_CORPORATIVA T2
                                 ON T1.ID_FACTURA = T2.ID_FACTURACION WHERE CONVERT(date,T1.FECHA_CREACION) BETWEEN '$fecha_inicio' AND '$fecha_fin'
                                 ";
@@ -105,6 +106,8 @@ Swal.fire(
 
                                     <tr>
                                     <td><?php echo $row['ID_ALERTA']; ?></td>
+                                    <td><?php echo $row['ID_FACTURACION']; ?></td>
+                                    
                                     <td><?php echo $row['CLIENTE_CORPORATIVO']; ?></td>
                                     <td><?php echo $row['EMAIL_TESORERIA']; ?></td>
                                     <td><?php echo $row['LINK_PDF']; ?></td>
@@ -132,6 +135,7 @@ Swal.fire(
                                 <tfoot>
                                     <tr>
                                     <th style="background-color:#0063AE;;color:#FFFFFF;">ID_ALERTA</th>
+                                    <th style="background-color:#0063AE;;color:#FFFFFF;">ID_FACTURACION</th>
 <th style="background-color:#0063AE;;color:#FFFFFF;">CLIENTE_CORPORATIVO</th>
 <th style="background-color:#0063AE;;color:#FFFFFF;">EMAIL_TESORERIA</th>
 <th style="background-color:#0063AE;;color:#FFFFFF;">LINK_PDF</th>

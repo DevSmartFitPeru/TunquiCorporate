@@ -305,8 +305,8 @@ $ubigeo_sunat = $data['data']['ubigeo_sunat'];
                                         <i class="notika-icon notika-mail"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="TESORERIA_EMAIL"  class="form-control" placeholder="Email de contacto tesoreria..."required>
-                                        <small>* Si el cliente tiene mas de un email, registrarlo separados por coma. Ejemplo<strong> "email1@gmail.com,email2@gmail.com"</strong></small>
+                                        <input type="text" name="TESORERIA_EMAIL"  class="form-control" placeholder="Email de recepcion de invoice..."required>
+                                        <small>* Si el cliente tiene mas de un email, registrarlo separados por punto y coma. Ejemplo:<strong> "email1@gmail.com;email2@gmail.com"</strong></small>
                                         <input type="hidden" name="USUARIO_CREADOR" value="<?php echo $nombres;?>" class="form-control" required>
                             
                                     </div>

@@ -2,7 +2,7 @@
 $contraseña = "31zDM#OJ9f1g7h!&hsDR";
 $usuario = "sa";
 $nombreBaseDeDatos = "ERP_ORACLE";
-$rutaServidor = "10.84.6.189";
+$rutaServidor = "tunquicorporate.ckioqeuxcht7.us-east-2.rds.amazonaws.com";
 try {
     $db = new PDO("sqlsrv:server=$rutaServidor;database=$nombreBaseDeDatos", $usuario, $contraseña);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

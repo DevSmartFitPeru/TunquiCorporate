@@ -1,6 +1,6 @@
 <?php
 
-$res = $db->prepare("SELECT ISNULL(COUNT(*),0) AS TOTAL FROM SALES_CORPORATE.CLIENTE.CLIENTE_CORPORATIVO");
+$res = $db->prepare("select ISNULL(COUNT(*),0) AS TOTAL from SALES_CORPORATE.CLIENTE.CLIENTE_CORPORATIVO");
 $res->execute();
 $total_customer = $res->fetchColumn();
 

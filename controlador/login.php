@@ -1,5 +1,5 @@
 <?php
-$serverName = "10.84.6.189";
+$serverName = "tunquicorporate.ckioqeuxcht7.us-east-2.rds.amazonaws.com";
 $connectionInfo = array("Database" => "ERP_ORACLE", "UID" => "sa", "PWD" => "31zDM#OJ9f1g7h!&hsDR", "CharacterSet" => "UTF-8");
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 #starts a new session

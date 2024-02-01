@@ -5,7 +5,7 @@ $fecha_actual = date("d-m-Y h:i:s");
 
 	session_start();
 	//include_once('../config/Conexion');
-	include '../config/Conexion.php';
+	include '../config/conexion.php';
 	if(isset($_POST['editar'])){
 
 

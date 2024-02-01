@@ -1,6 +1,7 @@
 <?php
 $serverName = "tunquicorporate.ckioqeuxcht7.us-east-2.rds.amazonaws.com";
-$connectionInfo = array("Database" => "ERP_ORACLE", "UID" => "sa", "PWD" => "31zDM#OJ9f1g7h!&hsDR", "CharacterSet" => "UTF-8");
+$connectionInfo = array("Database" => "ERP_ORACLE", "UID" => "sa", "PWD" => "31zDM#OJ9f1g7h!&hsDR", "CharacterSet" => "UTF-8","Encrypt"=>true,
+                         "TrustServerCertificate"=>true);
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 #starts a new session
 session_start();

@@ -115,6 +115,7 @@ if ($resultado = $db->query($sql)) {
 	}
 	catch(PDOException $e){
 		$_SESSION['message'] = $e->getMessage();
+		echo $e->getMessage();
 	}
 }
 else{

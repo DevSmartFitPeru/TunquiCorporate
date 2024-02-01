@@ -2,20 +2,20 @@
 error_reporting(0);
 include 'header.php';
 $ruc = $_GET['ruc'];
-$curl = curl_init();
-curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://apiperu.dev/api/ruc/".$ruc."?api_token=9031634e2e95c585c2ef29fbd786bc0eedf3542a40c98c40b1adb3e15d125251",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_CUSTOMREQUEST => "GET",
-    CURLOPT_SSL_VERIFYPEER => false
-));
-$response = curl_exec($curl);
-$err = curl_error($curl);
-curl_close($curl);
-if ($err) {
-    echo "cURL Error #:" . $err;
-} else {
-    //echo $response;
+if(!empty($ruc)){
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://apiperu.dev/api/ruc/".$ruc."?api_token=9031634e2e95c585c2ef29fbd786bc0eedf3542a40c98c40b1adb3e15d125251",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_SSL_VERIFYPEER => false
+    ));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } 
 }
 
 $data = json_decode($response, true);

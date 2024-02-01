@@ -55,6 +55,7 @@ $PROCEDIMIENTO_EMISION_CE=$LINE_CABECERA[4];
 	
 	catch(PDOException $e){
 		$_SESSION['message'] = $e->getMessage();
+        echo $e->getMessage();
 	}
 }
 else{

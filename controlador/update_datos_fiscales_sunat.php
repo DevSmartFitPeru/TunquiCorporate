@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('America/Lima');
  
-$fecha_actual = date("d-m-Y h:i:s");
+$fecha_actual = date("Y-m-d H:i:s");
 
 	session_start();
 	//include_once('../config/Conexion');
@@ -76,7 +76,7 @@ $fecha_actual = date("d-m-Y h:i:s");
             TESORERIA_TELEFONO = '$TESORERIA_TELEFONO',
             TESORERIA_EMAIL = '$TESORERIA_EMAIL',
             USUARIO_ACTUALIZADOR = '$USUARIO_ACTUALIZADOR',
-            ULTIMA_ACTUALIZACION=GETDATE(),
+            ULTIMA_ACTUALIZACION='$fecha_actual',
             TIPO_EMISION_CE='$TIPO_EMISION_CE',
             PROCEDIMIENTO_EMISION_CE='$proceso_name'
 
@@ -86,6 +86,7 @@ $fecha_actual = date("d-m-Y h:i:s");
 
 		}
 		catch(PDOException $e){
+            
 			$_SESSION['message'] = $e->getMessage();
 		}
 

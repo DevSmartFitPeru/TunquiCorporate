@@ -1,7 +1,9 @@
 <?php
 date_default_timezone_set('America/Lima');
  
-$fecha_actual = date("d-m-Y h:i:s");
+$fecha_actual = date("Y-m-d");
+$fecha = new DateTime($fecha_actual);
+$fecha_resultante = $fecha->format('Y-m-d');
 
 	session_start();
 	//include_once('../config/Conexion');
@@ -27,7 +29,10 @@ $fecha_actual = date("d-m-Y h:i:s");
 			$CANTIDAD = $_POST['CANTIDAD'];
 			$PRECIO_UNITARIO = $_POST['PRECIO_UNITARIO'];
 			
-            
+			//Obtenemos la cantidad de dias de pago y sumamaos a la fecha actual
+			$fecha->modify('+'.$FORMA_DE_PAGO.' day');
+            $fecha_vencimiento = $fecha->format('Y-m-d');
+
 			$sql = "UPDATE SALES_CORPORATE.[CLIENTE].[FACTURACION_CORPORATIVA] SET  NRO_TRANSACCION_AR = '$NRO_TRANSACCION_AR',
             FECHA_EMISION_AR = '$FECHA_EMISION_AR',
             NRO_COMPROBANTE_AR = '$NRO_COMPROBANTE_AR',
@@ -35,13 +40,14 @@ $fecha_actual = date("d-m-Y h:i:s");
             COMENTARIO = '$COMENTARIO',
             ESTADO = '$ESTADO',
             USUARIO_FACTURADOR = '$USUARIO_FACTURADOR',
-            FECHA_FACTURACION_SISTEMA=GETDATE(),
-            FECHA_VENCIMIENTO_INVOICE = DATEADD(DAY,TRY_CONVERT(INT,$FORMA_DE_PAGO),GETDATE()),
+            FECHA_FACTURACION_SISTEMA='".date('Y-m-d H:m:s')."',
+            FECHA_VENCIMIENTO_INVOICE ='$fecha_vencimiento',
 			CANTIDAD='$CANTIDAD',
 			PRECIO_UNITARIO='$PRECIO_UNITARIO'
 
 			WHERE ID_FACTURACION= '$id'";
 			//if-else statement in executing our query
+			echo $sql;
 			$_SESSION['message'] = ( $db->exec($sql) ) ? 'Datos fiscales procesados con exito!!!' : 'No se puso actualizar la información de la facturación en AR.';
 
 		}
